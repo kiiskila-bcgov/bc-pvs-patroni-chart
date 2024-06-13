@@ -16,13 +16,13 @@ imagePullSecrets: []
 nameOverride: ~
 fullnameOverride: ~
 
-credentials: {}
+credentials:
   # Username of replication account
   # replicationUsername: replication
   # # Username of superuser account
   # superuserUsername: postgres
   # # Application database name
-  appDbName: bc-pvs
+  appDbName: app
   # Username of application account
   appDbUserame: admin
 # To use an existing secret instead of having the chart generate one, provide the name of the existing secret here.
@@ -78,7 +78,7 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
     cpu: 500m
-    memory: 1Gi
+    memory: 512Mi
   requests:
     cpu: 20m
     memory: 256Mi
@@ -89,7 +89,7 @@ persistentVolume:
     - ReadWriteOnce
   annotations: {}
   mountPath: "/home/postgres/pgdata"
-  size: 2Gi
+  size: 500Mi
   storageClass: "netapp-block-standard"
 
 
