@@ -55,11 +55,19 @@ spec:
                 secretKeyRef:
                   key: app-db-username
                   name: {{ $secretName }}
+            {{- if .Values.credentials.appDbPasswordSecret }}
+            - name: APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: DB_PASSWORD
+                  name: app-secrets
+            {{- else }}
             - name: APP_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: app-db-password
                   name: {{ $secretName }}
+            {{- end }}
             - name: POD_IP
               valueFrom:
                 fieldRef:
