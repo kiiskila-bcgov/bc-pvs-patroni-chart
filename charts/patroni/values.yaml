@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
+replicaCount: 1
 
 image:
   repository: artifacts.developer.gov.bc.ca/bcgov-docker-local
@@ -92,5 +92,5 @@ persistentVolume:
     - ReadWriteOnce
   annotations: {}
   mountPath: "/home/postgres/pgdata"
-  size: 500Mi
+  size: 700Mi
   storageClass: "netapp-block-standard"
