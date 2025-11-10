@@ -109,6 +109,13 @@ spec:
                   fieldPath: metadata.name
             - name: PATRONI_POSTGRESQL_DATA_DIR
               value: "{{ .Values.persistentVolume.mountPath }}/pgroot/data"
+            - name: PATRONI_POSTGRESQL_PARAMETERS
+              value: |
+                {
+                  "shared_preload_libraries": "pg_stat_statements",
+                  "pg_stat_statements.track": "all",
+                  "pg_stat_statements.max": "10000"
+                }
             - name: PATRONI_POSTGRESQL_PGPASS
               value: "/tmp/pgpass"
             - name: PATRONI_POSTGRESQL_LISTEN

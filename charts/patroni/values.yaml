@@ -94,3 +94,10 @@ persistentVolume:
   mountPath: "/home/postgres/pgdata"
   size: 700Mi
   storageClass: "netapp-block-standard"
+
+patroni:
+  postgresql:
+    parameters:
+      shared_preload_libraries: pg_stat_statements
+      pg_stat_statements.track: all
+      pg_stat_statements.max: 10000
